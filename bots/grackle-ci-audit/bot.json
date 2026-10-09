@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schema/bot.schema.json",
+  "slug": "grackle-ci-audit",
+  "name": "CI Agent Audit",
+  "description": "Finds fork-triggerable CI agents that can write to your repo. Runs nothing.",
+  "category": "Code review",
+  "about": "Point it at a repo or a workflow file. The grackle scanner finds GitHub Actions and GitLab CI jobs where an untrusted fork pull request can reach a coding agent that holds a write token, then the bot reads the surrounding workflow and rules on each hit. It explains the trust path and the fix, and never runs anything from the workflows.",
+  "features": [
+    "Flag agents a fork PR can drive with write access",
+    "Rule on every scanner hit, with the trust path",
+    "Explain the gate or checkout change that fixes it"
+  ],
+  "examplePrompt": "Audit the workflows in this repo. Can an outside pull request reach a coding agent that can write to the repo?",
+  "author": { "github": "cpeoples", "name": "Chris Peoples" },
+  "mascot": { "body": "bear", "color": "brand-leaf", "activity": "thinking" },
+  "emoji": "🛡️",
+  "agent": "claude-code",
+  "permissionMode": "plan",
+  "allowedTools": ["Read", "Grep", "Glob", "Bash"]
+}
